@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Montserrat';
-    src: url("../assets/fonts/Montserrat/static/Montserrat-Medium.ttf");
+    src: url("./fonts/Montserrat/static/Montserrat-Medium.ttf");
 }
 
 :root {
@@ -78,13 +78,15 @@ body {
     height: 100%;
 
     display: flex;
-}
 
+    transition: all 0.5s ease;
+}
 .slide {
     width: calc(100% / var(--memes));
     height: 100%;
-}
 
+    transition: all 0.5s ease;
+}
 .image {
     width: 100%;
     height: 100%;
@@ -95,6 +97,15 @@ body {
 }
 
 .image1 {
+    background-image: url('./far.gif');
+}
+.image2 {
+    background-image: url('./far.gif');
+}
+.image3 {
+    background-image: url('./far.gif');
+}
+.image4 {
     background-image: url('./far.gif');
 }
 /* end .wrapper-slider */
@@ -130,10 +141,40 @@ label {
     width: 1em;
     height: 1em;
 
-    background: var(--color-dot);
+    border: calc(1em / 8) solid var(--color-dot);
+    border-radius: 50%;
 
-    transition: all 0.2s ease-out
+    transition: all 0.3s ease-out
 }
-label .dot:hover {
-    border-radius: calc(1em / 2);
+label:hover .dot {
+    border: calc(1em / 8) solid var(--color-active-dot);
+}
+/* end .wrapper-panel */
+
+/* slider */
+#slide1:checked ~ .wrapper-slider .slider, #slide1:checked ~ .wrapper-panel .slider {
+    margin-left: 0;
+}
+#slide2:checked ~ .wrapper-slider .slider, #slide2:checked ~ .wrapper-panel .slider {
+    margin-left: -100%;
+}
+#slide3:checked ~ .wrapper-slider .slider, #slide3:checked ~ .wrapper-panel .slider {
+    margin-left: -200%;
+}
+#slide4:checked ~ .wrapper-slider .slider, #slide4:checked ~ .wrapper-panel .slider {
+    margin-left: -300%;
+}
+
+/* dots */
+#slide1:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(1) .dot,
+#slide2:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(2) .dot,
+#slide3:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(3) .dot,
+#slide4:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(4) .dot {
+    background-color: var(--color-dot);
+}
+#slide1:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(1):hover .dot,
+#slide2:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(2):hover .dot,
+#slide3:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(3):hover .dot,
+#slide4:checked ~ .wrapper-panel .wrapper-control label:nth-of-type(4):hover .dot {
+    background-color: var(--color-active-dot);
 }
