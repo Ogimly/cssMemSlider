@@ -4,40 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./src/main.css">
     <title>cssMemSlider</title>
 </head>
 <body>
     <div class="wrapper">
-        <input type=radio name="slider" id="slide1">
-        <input type=radio name="slider" id="slide2">
-        <input type=radio name="slider" id="slide3">
-        <input type=radio name="slider" id="slide4">
+        <input class="wrapper-input" type=radio name="slider" id="slide1">
+        <input class="wrapper-input" type=radio name="slider" id="slide2">
+        <input class="wrapper-input" type=radio name="slider" id="slide3">
+        <input class="wrapper-input" type=radio name="slider" id="slide4">
       
-        <div class="slider-wrapper">
+        <div class="wrapper-slider">
             <div class=slider>
-                <article class="slide slide1">
-                    <p>text 1</p>
-                </article>
-                <article class="slide slide1">
-                    <p>text 2</p>
-                </article>
-                <article class="slide slide1">
-                    <p>text 3</p>
-                </article>
-                <article class="slide slide1">
-                    <p>text 4</p>
-                </article>
+                <div class="slide">
+                    <div class="image image1"></div>
+                </div>
+                <div class="slide">
+                    <div class="image image2"></div>
+                </div>
+                <div class="slide">
+                    <div class="image image3"></div>
+                </div>
+                <div class="slide">
+                    <div class="image image4"></div>
+                </div>
             </div>
         </div>
-      
-        <div class="control-wrapper">
-            <div class="control">
-                <label for=slide1></label>
-                <label for=slide2></label>
-                <label for=slide3></label>
-                <label for=slide4></label>
+
+        <div class="wrapper-panel">
+
+            <div class="wrapper-text-slider">
+                <div class=slider>
+                    <div class="slide">
+                        <div class="text">text 1</div>
+                    </div>
+                    <div class="slide">
+                        <div class="text">text 2</div>
+                    </div>
+                    <div class="slide">
+                        <div class="text">text 3</div>
+                    </div>
+                    <div class="slide">
+                        <div class="text">text 4</div>
+                    </div>
+                </div>
             </div>
+
+            <div class="wrapper-control">
+                <label for=slide1> <div class="dot"></div> </label>
+                <label for=slide2> <div class="dot"></div> </label>
+                <label for=slide3> <div class="dot"></div> </label>
+                <label for=slide4> <div class="dot"></div> </label>
+            </div>
+            
         </div>
     </div>
 </body>
