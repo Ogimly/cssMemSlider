@@ -9,7 +9,9 @@
     --color-shadow: rgb(100, 100, 100);
     --color-dot: rgb(140, 140, 140);
     --color-active-dot: rgb(230, 230, 230);
+    --color-danger: rgb(0, 200, 0);
 
+    --screens: 3;
     --memes: 4;
 }
   
@@ -26,7 +28,6 @@ html {
 
 body {
     height: 100vh;
-    padding: calc(1em * 2);
 
     color: var(--color-text);
     background-color: var(--color-background);
@@ -35,14 +36,130 @@ body {
     /* font-size: 10px; */
 }
 
-.wrapper {
+.body-wrapper {
+    width: 100%;
+    height: 100%;
+
+    margin: 0 0;
+
+    overflow: hidden;
+}
+.body-slider {
+    width: calc(100% * var(--screens));
+    height: 100%;
+
+    display: flex;
+
+    transition: all 0.5s ease;
+}
+.body-slide {
+    width: calc(100% / var(--screens));
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.5s ease;
+}
+
+/* body-slider */
+#body1:checked ~ .body-slider {
+    margin-left: 0%;
+}
+#body2:checked ~ .body-slider {
+    margin-left: -100%;
+}
+#body3:checked ~ .body-slider {
+    margin-left: -200%;
+}
+
+/** ------------------ Morpheus slide #2 ------------------ **/
+.matrix {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url('./matrix.png');
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.matrix label {
+    width: 40%;
+    height: 33%;
+
+    cursor: pointer;
+}
+.matrix div {
+    width: 20%;
+    height: 33%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.matrix p {
+    color: var(--color-active-dot);
+
+    animation: appear 10s ease;
+}
+@keyframes appear {
+    0% { opacity: 0; }
+    5% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/** ------------------ BLUE pill slide #3 ------------------ **/
+.blue {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+.danger {
+    padding: calc(1em / 4);
+    font-size: 7em;
+    text-align: center;
+    text-shadow: 0 0 calc(1em / 4) var(--color-background);
+    color: var(--color-background);
+
+    border-radius: calc(1em / 2);
+    box-shadow: 0 0 calc(1em / 2) var(--color-danger), 0 0 calc(1em / 4) var(--color-danger);
+    background-color: var(--color-danger);
+}
+a {
+    padding: calc(1em / 4);
+    font-size: 4em;
+    text-align: center;
+    text-shadow: 0 0 calc(1em / 4) var(--color-danger);
+    color: var(--color-danger);
+    text-decoration: none;
+
+    border-radius: calc(1em / 2);
+    border: 0.1em solid var(--color-danger);
+
+    animation: danger 2s ease;
+    animation-iteration-count: infinite;
+}
+.blue label {
+    cursor: pointer;
+    font-size: 2em;
+}
+@keyframes danger {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+/** ------------------ MAIN slide #1 ------------------ **/
+.wrapper { /* red */
     width: 100%;
     max-width: 50em;
     height: 100%;
     max-height: 50em;
-
-    margin: 0 auto;
-    padding: 1em 0.5em;
+    padding: 0.5em;
 
     display: flex;
 
@@ -51,7 +168,7 @@ body {
 }
 
 /* in .wrapper - flex-horizontal */
-.wrapper-input {
+.wrapper-input, .body-input {
     display: none;
 }
 .wrapper-inner {
@@ -110,7 +227,7 @@ body {
 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain; /* cover; */
 }
 
 .image1 {
@@ -143,9 +260,15 @@ body {
     height: 100%;
 
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     gap: calc(1em / 4);
 }
-.wrapper-control label {
+.wrapper-dots {
+    display: flex;
+    gap: calc(1em / 4);
+}
+.wrapper-dots label {
     width: calc(1em * 2);
     height: calc(1em * 2);
 
@@ -164,10 +287,19 @@ body {
 
     transition: all 0.3s ease-out
 }
-.wrapper-control label:hover .dot {
+.wrapper-dots label:hover .dot {
     width: 1.5em;
     height: 1.5em;
     border: calc(1em / 8) solid var(--color-active-dot);
+}
+.wrapper-control label {
+    text-align: center;
+    cursor: pointer;
+
+    transition: all 0.3s ease-out
+}
+.wrapper-control label:hover {
+    color: var(--color-active-dot);
 }
 /* end .wrapper-footer */
 
@@ -239,15 +371,15 @@ body {
 
 
 /* dots */
-#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(1) .dot,
-#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(2) .dot,
-#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(3) .dot,
-#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(4) .dot {
+#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(1) .dot,
+#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(2) .dot,
+#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(3) .dot,
+#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(4) .dot {
     background-color: var(--color-dot);
 }
-#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(1):hover .dot,
-#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(2):hover .dot,
-#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(3):hover .dot,
-#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control label:nth-of-type(4):hover .dot {
+#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(1):hover .dot,
+#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(2):hover .dot,
+#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(3):hover .dot,
+#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(4):hover .dot {
     background-color: var(--color-active-dot);
 }
