@@ -102,11 +102,11 @@ body {
 .matrix p {
     color: var(--color-active-dot);
 
-    animation: appear 10s ease;
+    animation: appear 6s ease;
 }
 @keyframes appear {
     0% { opacity: 0; }
-    5% { opacity: 0; }
+    50% { opacity: 0; }
     100% { opacity: 1; }
 }
 
@@ -169,7 +169,8 @@ a {
 
 /* in .wrapper - flex-horizontal */
 .wrapper-input, .body-input {
-    display: none;
+    width: 0%;
+    height: 0%;
 }
 .wrapper-inner {
     width: calc(100% - 4em);
@@ -305,8 +306,8 @@ a {
 
 /* in .wrapper-arrows-prev, .wrapper-arrows-next */
 .wrapper-arrows-prev label, .wrapper-arrows-next label {
-    width: 2em;
-    height: 2em;
+    width: 0%;
+    height: 0%;
 
     border-radius: 50%;
 
@@ -315,14 +316,10 @@ a {
     align-items: center;
 
     cursor: pointer;
-
-    display: none;
 }
 .prev, .next {
     width: 70%;
     height: 70%;
-    border-top: calc(1em / 8) solid var(--color-dot);
-    border-left: calc(1em / 8) solid var(--color-dot);
 
     transition: all 0.3s ease-out
 }
@@ -332,26 +329,20 @@ a {
 .next {
     transform: rotate(135deg);
 }
-.wrapper-arrows-prev label:hover .prev, .wrapper-arrows-next label:hover .next {
-    width: 80%;
-    height: 80%;
-    border-top: calc(1em / 6) solid var(--color-active-dot);
-    border-left: calc(1em / 6) solid var(--color-active-dot);
-}
 /* end .wrapper-arrows-prev, .wrapper-arrows-next */
 
 
 /* slider */
-#slide1:checked ~ .wrapper-inner .wrapper-slider .slider, #slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-text-slider .slider {
+#slide1:checked ~ .wrapper-inner .slider, #slide1:checked ~ .wrapper-inner .slider {
     margin-left: 0;
 }
-#slide2:checked ~ .wrapper-inner .wrapper-slider .slider, #slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-text-slider .slider {
+#slide2:checked ~ .wrapper-inner .slider, #slide2:checked ~ .wrapper-inner .slider {
     margin-left: -100%;
 }
-#slide3:checked ~ .wrapper-inner .wrapper-slider .slider, #slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-text-slider .slider {
+#slide3:checked ~ .wrapper-inner .slider, #slide3:checked ~ .wrapper-inner .slider {
     margin-left: -200%;
 }
-#slide4:checked ~ .wrapper-inner .wrapper-slider .slider, #slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-text-slider .slider {
+#slide4:checked ~ .wrapper-inner .slider, #slide4:checked ~ .wrapper-inner .slider {
     margin-left: -300%;
 }
 
@@ -366,20 +357,47 @@ a {
 #slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2),
 #slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3),
 #slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4) {
-    display: flex;
+    width: 2em;
+    height: 2em;
+}
+#slide1:checked ~ .wrapper-arrows-prev label:nth-of-type(1) .prev,
+#slide2:checked ~ .wrapper-arrows-prev label:nth-of-type(2) .prev,
+#slide3:checked ~ .wrapper-arrows-prev label:nth-of-type(3) .prev,
+#slide4:checked ~ .wrapper-arrows-prev label:nth-of-type(4) .prev,
+
+#slide1:checked ~ .wrapper-arrows-next label:nth-of-type(1) .next,
+#slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2) .next,
+#slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3) .next,
+#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4) .next {
+    border-top: calc(1em / 8) solid var(--color-dot);
+    border-left: calc(1em / 8) solid var(--color-dot);
+}
+#slide1:checked ~ .wrapper-arrows-prev label:nth-of-type(1):hover .prev,
+#slide2:checked ~ .wrapper-arrows-prev label:nth-of-type(2):hover .prev,
+#slide3:checked ~ .wrapper-arrows-prev label:nth-of-type(3):hover .prev,
+#slide4:checked ~ .wrapper-arrows-prev label:nth-of-type(4):hover .prev,
+
+#slide1:checked ~ .wrapper-arrows-next label:nth-of-type(1):hover .next,
+#slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2):hover .next,
+#slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3):hover .next,
+#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4):hover .next {
+    width: 80%;
+    height: 80%;
+    border-top: calc(1em / 6) solid var(--color-active-dot);
+    border-left: calc(1em / 6) solid var(--color-active-dot);
 }
 
 
 /* dots */
-#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(1) .dot,
-#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(2) .dot,
-#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(3) .dot,
-#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(4) .dot {
+#slide1:checked ~ .wrapper-inner label:nth-of-type(1) .dot,
+#slide2:checked ~ .wrapper-inner label:nth-of-type(2) .dot,
+#slide3:checked ~ .wrapper-inner label:nth-of-type(3) .dot,
+#slide4:checked ~ .wrapper-inner label:nth-of-type(4) .dot {
     background-color: var(--color-dot);
 }
-#slide1:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(1):hover .dot,
-#slide2:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(2):hover .dot,
-#slide3:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(3):hover .dot,
-#slide4:checked ~ .wrapper-inner .wrapper-footer .wrapper-control .wrapper-dots label:nth-of-type(4):hover .dot {
+#slide1:checked ~ .wrapper-inner label:nth-of-type(1):hover .dot,
+#slide2:checked ~ .wrapper-inner label:nth-of-type(2):hover .dot,
+#slide3:checked ~ .wrapper-inner label:nth-of-type(3):hover .dot,
+#slide4:checked ~ .wrapper-inner label:nth-of-type(4):hover .dot {
     background-color: var(--color-active-dot);
 }
