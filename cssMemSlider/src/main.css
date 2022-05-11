@@ -12,7 +12,7 @@
     --color-danger: rgb(0, 200, 0);
 
     --screens: 3;
-    --memes: 4;
+    --memes: 5;
 }
   
 * {
@@ -101,6 +101,7 @@ body {
 }
 .matrix p {
     color: var(--color-active-dot);
+    text-align: center;
 
     animation: appear 6s ease;
 }
@@ -156,9 +157,9 @@ a {
 /** ------------------ MAIN slide #1 ------------------ **/
 .wrapper { /* red */
     width: 100%;
-    max-width: 50em;
+    max-width: 60em;
     height: 100%;
-    max-height: 50em;
+    max-height: 70%;
     padding: 0.5em;
 
     display: flex;
@@ -193,13 +194,13 @@ a {
 /* in .wrapper-inner - flex-vertical */
 .wrapper-slider {
     width: 100%;
-    height: 80%;
+    height: 85%;
 
     overflow: hidden;
 }
 .wrapper-footer {
     width: 100%;
-    height: 20%;
+    height: 15%;
 
     display: flex;
     justify-content: space-between;
@@ -232,16 +233,26 @@ a {
 }
 
 .image1 {
-    background-image: url('./far.gif');
+    background-image: url('./slide1.jpg');
 }
 .image2 {
-    background-image: url('./far.gif');
+    background-image: url('./slide2.jpg');
 }
 .image3 {
-    background-image: url('./far.gif');
+    background-image: url('./slide3.jpg');
 }
 .image4 {
-    background-image: url('./far.gif');
+    background-image: url('./slide4.jpg');
+}
+.image5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+video {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
 }
 /* end .wrapper-slider */
 
@@ -345,6 +356,9 @@ a {
 #slide4:checked ~ .wrapper-inner .slider, #slide4:checked ~ .wrapper-inner .slider {
     margin-left: -300%;
 }
+#slide5:checked ~ .wrapper-inner .slider, #slide5:checked ~ .wrapper-inner .slider {
+    margin-left: -400%;
+}
 
 
 /* arrows */
@@ -352,11 +366,13 @@ a {
 #slide2:checked ~ .wrapper-arrows-prev label:nth-of-type(2),
 #slide3:checked ~ .wrapper-arrows-prev label:nth-of-type(3),
 #slide4:checked ~ .wrapper-arrows-prev label:nth-of-type(4),
+#slide5:checked ~ .wrapper-arrows-prev label:nth-of-type(5),
 
 #slide1:checked ~ .wrapper-arrows-next label:nth-of-type(1),
 #slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2),
 #slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3),
-#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4) {
+#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4), 
+#slide5:checked ~ .wrapper-arrows-next label:nth-of-type(5) {
     width: 2em;
     height: 2em;
 }
@@ -364,11 +380,13 @@ a {
 #slide2:checked ~ .wrapper-arrows-prev label:nth-of-type(2) .prev,
 #slide3:checked ~ .wrapper-arrows-prev label:nth-of-type(3) .prev,
 #slide4:checked ~ .wrapper-arrows-prev label:nth-of-type(4) .prev,
+#slide5:checked ~ .wrapper-arrows-prev label:nth-of-type(5) .prev,
 
 #slide1:checked ~ .wrapper-arrows-next label:nth-of-type(1) .next,
 #slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2) .next,
 #slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3) .next,
-#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4) .next {
+#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4) .next,
+#slide5:checked ~ .wrapper-arrows-next label:nth-of-type(5) .next {
     border-top: calc(1em / 8) solid var(--color-dot);
     border-left: calc(1em / 8) solid var(--color-dot);
 }
@@ -376,11 +394,13 @@ a {
 #slide2:checked ~ .wrapper-arrows-prev label:nth-of-type(2):hover .prev,
 #slide3:checked ~ .wrapper-arrows-prev label:nth-of-type(3):hover .prev,
 #slide4:checked ~ .wrapper-arrows-prev label:nth-of-type(4):hover .prev,
+#slide5:checked ~ .wrapper-arrows-prev label:nth-of-type(5):hover .prev,
 
 #slide1:checked ~ .wrapper-arrows-next label:nth-of-type(1):hover .next,
 #slide2:checked ~ .wrapper-arrows-next label:nth-of-type(2):hover .next,
 #slide3:checked ~ .wrapper-arrows-next label:nth-of-type(3):hover .next,
-#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4):hover .next {
+#slide4:checked ~ .wrapper-arrows-next label:nth-of-type(4):hover .next,
+#slide5:checked ~ .wrapper-arrows-next label:nth-of-type(5):hover .next {
     width: 80%;
     height: 80%;
     border-top: calc(1em / 6) solid var(--color-active-dot);
@@ -392,12 +412,125 @@ a {
 #slide1:checked ~ .wrapper-inner label:nth-of-type(1) .dot,
 #slide2:checked ~ .wrapper-inner label:nth-of-type(2) .dot,
 #slide3:checked ~ .wrapper-inner label:nth-of-type(3) .dot,
-#slide4:checked ~ .wrapper-inner label:nth-of-type(4) .dot {
+#slide4:checked ~ .wrapper-inner label:nth-of-type(4) .dot,
+#slide5:checked ~ .wrapper-inner label:nth-of-type(5) .dot {
     background-color: var(--color-dot);
 }
 #slide1:checked ~ .wrapper-inner label:nth-of-type(1):hover .dot,
 #slide2:checked ~ .wrapper-inner label:nth-of-type(2):hover .dot,
 #slide3:checked ~ .wrapper-inner label:nth-of-type(3):hover .dot,
-#slide4:checked ~ .wrapper-inner label:nth-of-type(4):hover .dot {
+#slide4:checked ~ .wrapper-inner label:nth-of-type(4):hover .dot,
+#slide5:checked ~ .wrapper-inner label:nth-of-type(5):hover .dot {
     background-color: var(--color-active-dot);
+}
+
+
+@media (min-width: 768px) and (max-width: 1200px) {
+    /** ------------------ Morpheus slide #2 ------------------ **/
+    .matrix label {
+        height: 50%;
+    }
+    .matrix div {
+        height: 50%;
+    }
+        .matrix p {
+        font-size: 0.8em;
+    }
+
+    /** ------------------ BLUE pill slide #3 ------------------ **/
+    .blue {
+        gap: 2em;
+    }
+    .danger {
+        font-size: 4em;
+    }
+    a {
+        font-size: 3em;
+    }
+    .blue label {
+        font-size: 2em;
+    }
+
+    /** ------------------ MAIN slide #1 ------------------ **/
+    .wrapper { /* red */
+        max-width: 80%;
+        max-height: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    /** ------------------ Morpheus slide #2 ------------------ **/
+    .matrix label {
+        height: 70%;
+    }
+    .matrix div {
+        height: 70%;
+    }
+    .matrix p {
+        font-size: 0.6em;
+    }
+
+    /** ------------------ BLUE pill slide #3 ------------------ **/
+    .blue {
+        gap: 1em;
+    }
+    .danger {
+        font-size: 2em;
+    }
+    a {
+        font-size: 1.5em;
+    }
+    .blue label {
+        font-size: 1em;
+    }
+    
+
+    /** ------------------ MAIN slide #1 ------------------ **/
+    .wrapper { /* red */
+        max-width: 90%;
+        max-height: 50%;
+    }
+
+    .wrapper-text-slider .text {
+        font-size: 0.8em;
+        text-align: center;
+    }
+
+    .wrapper-slider {
+        height: 80%;
+    }
+    .wrapper-footer {
+        height: 20%;
+        gap: 0.5em;
+
+        flex-direction: column;
+    }
+    
+    .wrapper-control {
+        gap: calc(1em / 8);
+        order: -1;
+
+        justify-content: center;
+    }
+    .wrapper-dots {
+        gap: calc(1em / 8);
+
+        justify-content: center;
+    }
+    .wrapper-dots label {
+        width: calc(1em * 1.6);
+        height: calc(1em * 1.6);
+    }
+    .wrapper-control label {
+        font-size: 0.8em;
+        order: -1;
+    }
+    .dot {
+        width: 0.7em;
+        height: 0.7em;
+    }
+    .wrapper-dots label:hover .dot {
+        width: 1em;
+        height: 1em;
+    }
 }
