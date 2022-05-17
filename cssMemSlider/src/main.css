@@ -504,7 +504,7 @@ video {
 
     .wrapper-text-slider .text {
         font-size: 0.7em;
-        text-align: center;
+        /* text-align: center; */
     }
 
     .wrapper-slider {
@@ -529,7 +529,7 @@ video {
         justify-content: center;
     }
     .wrapper-dots label {
-        width: calc(1em * 1.6);
+        width: calc(3em * 1.6);
         height: calc(1em * 1.6);
     }
     .wrapper-control label {
@@ -537,11 +537,13 @@ video {
         order: -1;
     }
     .dot {
-        width: 0.7em;
+        width: 2em;
         height: 0.7em;
+
+        border-radius: 30%;
     }
     .wrapper-dots label:hover .dot {
-        width: 1em;
-        height: 1em;
+        width: 2.5em;
+        height: 0.7em;
     }
 }
